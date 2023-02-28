@@ -1,0 +1,30 @@
+{
+  "options": {
+    "winrar-dir": "C:/Program Files/WinRAR/WinRAR.exe"
+  },
+  "tasks": [
+    {
+      "name": "SimulationCraft",
+      "url": "http://downloads.simulationcraft.org/nightly/",
+      "regex": "simc-[\\d]{4}\\.[\\d]+\\.[\\w\\d]+-win64\\.7z",
+      "reverse?": true,
+      "download": "http://downloads.simulationcraft.org/nightly/%s",
+      "target": "C:\\Users\\skovborg\\Documents\\SimulationCraft\\%s",
+      "zip?": true
+    }
+  ],
+  "paused": [
+    {
+      "name": "VenturePlan",
+      "url": "https://www.townlong-yak.com/addons/venture-plan/release",
+      "regex": "/addons/venture-plan/release/([\\d.]+)",
+      "redir?": {
+        "url": "https://www.townlong-yak.com/addons/venture-plan/release/%s",
+        "regex": "VenturePlan-[\\d.]+.zip"
+      },
+      "download": "https://www.townlong-yak.com/%s",
+      "target": "C:\\Program Files (x86)\\World of Warcraft\\_retail_\\Interface\\AddOns\\%s",
+      "zip?": true
+    }
+  ]
+}
