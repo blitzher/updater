@@ -100,7 +100,11 @@ def remove_old(task, current):
         is_match = re.match(folder_regex, file)
 
         if re.match(folder_regex, file) and file != current:
-            os.system("rm -rf %s" % file)
+            print("Removing old file {}".format(file))
+            if (path.isdir(file)):
+                os.rmdir(file)
+            else:
+                os.remove(file)
 
 
 def download_url(url, save_path, chunk_size=128):
