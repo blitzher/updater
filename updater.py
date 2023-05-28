@@ -4,6 +4,7 @@ import os
 import sys
 import time
 import json
+import shutil
 from os import path
 import py7zr as zp
 from tqdm import tqdm
@@ -47,8 +48,9 @@ class Task:
         # if the most up-to-date version is not found
         if not os.path.exists(version):
             # remove older zip versions beforehand
-            os.system("rm -rf *.7z")
-            os.system("rm -rf *.zip")
+            for element in os.listdir(os.curdir):
+                if (element.endswith(".zip") or element.endswith(".7z")):
+                    os.remove(element)
 
             # download to disk
             save_name = version.split("/")[-1]
@@ -100,9 +102,9 @@ def remove_old(task, current):
         is_match = re.match(folder_regex, file)
 
         if re.match(folder_regex, file) and file != current:
-            print("Removing old file {}".format(file))
+            print("Removing old version {}".format(file))
             if (path.isdir(file)):
-                os.rmdir(file)
+                shutil.rmtree(file, ignore_errors=True)
             else:
                 os.remove(file)
 
